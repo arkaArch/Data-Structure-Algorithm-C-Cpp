@@ -10,7 +10,7 @@ void print_array(int A[], int arr_size) {
     printf("%d ", A[i]);
 }
 
-// Here we return an pointer of an array
+/* Here we return an pointer of an array */
 int *create_an_array(int n) {
   int *p;
   p = (int *)malloc(sizeof(int) * n);

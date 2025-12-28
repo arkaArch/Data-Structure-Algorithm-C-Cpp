@@ -6,7 +6,7 @@ struct Rectangle {
 };
 
 int area_of_rectangle(Rectangle rectangle) {
-  // IN C++ THERE IS NO NEED TO WRITE "struct"
+  /* IN C++ THERE IS NO NEED TO WRITE "struct" */
   /* Remember: This is call by value. An seperate object will be created here
    * and everything will be copied in the corresponding members. */
   return rectangle.length * rectangle.breadth;

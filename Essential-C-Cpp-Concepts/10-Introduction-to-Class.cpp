@@ -7,24 +7,24 @@ private:
   int breadth;
 
 public:
-  // Default constructor
+  /* Default constructor */
   Rectangle() { length = breadth = 0; }
-  // Parameterized constructor
+  /* Parameterized constructor */
   Rectangle(int l, int b);
 
-  // Faccilitators
+  /* Faccilitators */
   int area();
   int perimeter();
 
-  // Accessors / get functions / getter function
+  /* Accessors / get functions / getter function */
   int getLength() { return length; }
   int getBreadth() { return breadth; }
 
-  // Mutator / set functions / setter function
+  /* Mutator / set functions / setter function */
   void setLength(int length) { this->length = length; }
   void setBreadth(int breadth) { this->breadth = breadth; }
 
-  // Destructor
+  /* Destructor */
   ~Rectangle();
 };
 
@@ -44,7 +44,7 @@ Rectangle::~Rectangle() {
 }
 
 int main() {
-  // Creating a Rectangle object
+  /* Creating a Rectangle object */
   Rectangle r(10, 5);
   cout << "Length and breadth of the rectangle: " << r.getLength() << ", "
        << r.getBreadth() << endl;
@@ -53,7 +53,7 @@ int main() {
 
   cout << endl;
 
-  // Change length and breadth
+  /* Change length and breadth */
   r.setLength(20), r.setBreadth(15);
   cout << "Updated length and breadth of the rectangle: " << r.getLength()
        << ", " << r.getBreadth() << endl;

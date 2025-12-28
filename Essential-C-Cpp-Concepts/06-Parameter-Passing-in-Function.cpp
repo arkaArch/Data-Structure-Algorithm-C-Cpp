@@ -14,7 +14,7 @@ void swap_pass_by_address(int *a, int *b) {
   *b = temp;
 }
 
-// Here comes the power of reference in c++
+/* Here comes the power of reference in c++ */
 void swap_pass_by_reference(int &a, int &b) {
   /* The interesting point about this function is, since it is using the
    * reference, inside memory there are no activation record is created by this
@@ -42,7 +42,7 @@ int main() {
   std::cout << "After swapping[swap_pass_by_address] x = " << x << ", y = " << y
             << std::endl;
 
-  // Reset the value
+  /* Reset the value */
   x = 10, y = 5;
   swap_pass_by_reference(x, y);
   std::cout << "After swapping[swap_pass_by_reference] x = " << x
