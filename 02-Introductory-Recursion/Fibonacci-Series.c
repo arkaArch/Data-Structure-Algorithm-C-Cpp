@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int fib(int n) {
-  if (n <= 1)
-    return n;
-  return fib(n - 1) + fib(n - 2);
+    if (n <= 1)
+        return n;
+    return fib(n - 1) + fib(n - 2);
 }
 
 /* Now if we trace the recusive function, say for fib(5), we can see that
@@ -15,27 +15,27 @@ int fib(int n) {
 /* Declare an array of size n and initialize with a value of -1 */
 int F[100];
 int mfib(int n) {
-  if (n <= 1) {
-    F[n] = n;
-    return n;
-  } else {
-    /* Check if value presents inside array, else assign */
-    if (F[n - 1] == -1)
-      F[n - 1] = mfib(n - 1);
-    if (F[n - 2] == -1)
-      F[n - 2] = mfib(n - 2);
-    F[n] = F[n - 1] + F[n - 2];
-    return F[n];
-  }
+    if (n <= 1) {
+        F[n] = n;
+        return n;
+    } else {
+        /* Check if value presents inside array, else assign */
+        if (F[n - 1] == -1)
+            F[n - 1] = mfib(n - 1);
+        if (F[n - 2] == -1)
+            F[n - 2] = mfib(n - 2);
+        F[n] = F[n - 1] + F[n - 2];
+        return F[n];
+    }
 }
 
 int main() {
-  printf("20th number of fibonacci series: %d\n", fib(20));
+    printf("20th number of fibonacci series: %d\n", fib(20));
 
-  for (int i = 0; i < 100; i++)
-    F[i] = -1;
+    for (int i = 0; i < 100; i++)
+        F[i] = -1;
 
-  printf("20th number of fibonacci series: %d\n", mfib(20));
+    printf("20th number of fibonacci series: %d\n", mfib(20));
 
-  return 0;
+    return 0;
 }

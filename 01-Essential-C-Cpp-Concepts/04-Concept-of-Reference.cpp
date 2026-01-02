@@ -7,9 +7,9 @@
 #include <iostream>
 
 int main() {
-  int a = 10;
-  /* Making the reference */
-  int &r = a;
-  std::cout << r << std::endl;
-  std::cout << sizeof(r) << " bytes." << std::endl;
+    int a = 10;
+    /* Making the reference */
+    int &r = a;
+    std::cout << r << std::endl;
+    std::cout << sizeof(r) << " bytes." << std::endl;
 }
