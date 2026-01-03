@@ -19,9 +19,9 @@ int main() {
         printf("%d ", arr[i]);
     printf("\n");
 
-    /* Free the memory (though the mwmory is automatically deleted after
+    /* Free the memory (though the memory is automatically deleted after
      * programs finished it's execution, but it's a good practice and must do
-     * for big programs for memory management) */
+     * for big programs to prevent memory leak) */
     free(arr);
 
     return 0;
