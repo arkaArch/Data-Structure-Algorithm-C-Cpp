@@ -102,6 +102,9 @@ int main() {
         /* Print a new line after printing a row */
         printf("\n");
     }
+
+    /* Free the memory accupied by 2D-array */
+    free(arr_3);
     
     return 0;
 }
