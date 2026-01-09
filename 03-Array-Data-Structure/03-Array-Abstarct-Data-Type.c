@@ -41,7 +41,14 @@ void append(Array *arr) {
     }
 }
 
-void insert(Array *arr) {
+int is_sorted(Array *arr) {
+    for(int i = 0; i < arr->length - 1; i++)
+        if(arr->A[i] > arr->A[i + 1])
+            return 0;
+    return 1;
+}
+
+void insert_in_unsorted_array(Array *arr, int element) {
     if(arr->length == arr->size)
         printf(C_RED "Array is full.\n" C_RESET);    
     else {
@@ -58,13 +65,29 @@ void insert(Array *arr) {
             for(int i = arr->length; i > index; i--)
                 arr->A[i] = arr->A[i-1];
             /* Insert the element at required index */
-            int element;
-            printf(C_GREEN "element >> " C_RESET);
-            scanf("%d", &element);
             arr->A[index] = element;
             arr->length++;
         }
     }
+}
+
+void insert_in_sorted_array(Array *arr, int element) {
+    if(arr->length == arr->size) {
+        puts(C_RED "Array is full. No insertion possible." C_RESET);
+        return;
+    }
+    /* Check from the last index. If the element in array is greater than the new
+     * element, move it to it's next position. And when the new element is greater
+     * than the element of array, mark the index and put the new element into the
+     * next index of the particular index. */
+    int i = arr->length - 1;
+    while(i >= 0 && arr->A[i] > element) {
+        arr->A[i + 1] = arr->A[i];
+        i--;
+    }
+    arr->A[i + 1] = element;
+    /* Increase the length of the array by one */
+    arr->length++ ;
 }
 
 void delete(Array *arr) {
@@ -99,17 +122,42 @@ void reverse(Array *arr) {
     }
 }
 
-int search(Array *arr) {
-    /* Here we implement linear search:
-     * In linear search we return the index of the unique element
+int linear_search(Array *arr, int key) {
+    /* In linear search we return the index of the unique element
      * or return the first index of duplicate element in an array */
-    int element;
-    printf(C_GREEN "element >> " C_RESET);
-    scanf("%d", &element);
-
     for(int i = 0; i < arr->length; i++) {
-        if(arr->A[i] == element)
+        if(arr->A[i] == key)
             return i;
+    }
+    return -1;
+}
+
+int binary_search(Array *arr, int key) {
+    /* Only works for sorted array */
+    int low = 0, high = arr->length-1;
+    while(low <= high) {
+        int mid = low + (high - low) / 2;
+        if(arr->A[mid] == key)
+            return mid;
+        else if(arr->A[mid] < key)
+            /* Ignore left half */
+            low = mid + 1;
+        else
+            /* Ignore right half */
+            high = mid - 1;
+    }
+    return -1;
+}
+
+int recursive_binary_search(Array *arr, int low, int high, int key) {
+    if(low <= high) {
+        int mid = low + (high - low) / 2;
+        if(arr->A[mid] == key)
+            return mid;
+        else if(arr->A[mid] < key)
+            return recursive_binary_search(arr, mid + 1, high, key);
+        else
+            return recursive_binary_search(arr, low, mid - 1, key);
     }
     return -1;
 }
@@ -125,16 +173,19 @@ int main() {
     int user_input;
     while(1) {
         puts("\n===============: Choose the option from below :===============");
-        printf("1. DISPLAY \t");
+        printf("1. DISPLAY \t\t");
         printf("2. APPEND \t");
-        printf("3. INSERT \t");
-        printf("4. DELETE \n");
-        printf("5. SEARCH \t");
-        printf("6. REVERSE \t");
-        printf("7. EXIT \t");
+        printf("3. INSERT(SORTED) \n");
+        printf("4. INSERT(UNSORTED) \t");
+        printf("5. DELETE \t");
+        printf("6. SEARCH \n");
+        printf("7. REVERSE \t\t");
+        printf("8. EXIT");
+
         printf(C_GREEN"\n\ninput >> "C_RESET);
         scanf("%d", &user_input);
 
+        int x;
         switch(user_input) {
             case 1:
                 display(&arr);
@@ -142,24 +193,56 @@ int main() {
             case 2:
                 append(&arr);
                 break;
+            
             case 3:
-                insert(&arr);
+                /* Check if array is sorted */
+                if(is_sorted(&arr) == 0)
+                    printf(C_RED "Array is not sorted." C_RESET); 
+                else {
+                    printf(C_GREEN "element >> " C_RESET);
+                    scanf("%d", &x);
+                    insert_in_sorted_array(&arr, x);
+                }
                 break;
+
             case 4:
+                printf(C_GREEN "element >> " C_RESET);
+                scanf("%d", &x);
+                insert_in_unsorted_array(&arr, x);
+                break;
+            
+            case 5:
                 delete(&arr);
                 break;
-            case 5:
-                int index = search(&arr);
+
+            case 6:
+                printf(C_GREEN "key >> " C_RESET);
+                scanf("%d", &x);
+
+                /* Check if array is sorted or not */
+                int index;
+                if(is_sorted(&arr) == 1) {
+                    index = binary_search(&arr, x);
+                    puts("By binary search...");
+                }
+                else {
+                    index = linear_search(&arr, x);
+                    puts("By linear search...");
+                }
                 if(index != -1)
                     printf("Element found at index %d\n", index);
                 else
-                    printf("Element in not found.\n");
+                    printf("Element is not found.\n");
+
                 break;
-            case 6:
+
+            case 7:
                 reverse(&arr);
                 break;
-            case 7:
+
+            case 8:
                 exit(0);
+
             default:
                 printf("Wrong input.");
         }
