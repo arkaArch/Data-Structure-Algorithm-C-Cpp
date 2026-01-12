@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 int missing_element(int A[], int len) {
+    /* This function finds a missing element inside an sorted sequence */
+    /* Assume that the difference between each number of the sequence in 1 */
     /* Calculate difference between element and index */
     int diff = A[0];
     for(int i = 0; i < len; i++) {
@@ -13,6 +15,8 @@ int missing_element(int A[], int len) {
 }
 
 void missing_elements(int A[], int len) {
+    /* This function finds multiple missing elements inside an sorted sequence */
+    /* Assume that the difference between each number of the sequence in 1 */
     int diff = A[0];
     for(int i = 0; i < len; i++) {
         if(A[i] - i > diff) {
