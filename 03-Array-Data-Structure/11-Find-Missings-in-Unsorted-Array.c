@@ -21,7 +21,7 @@ int *max_min_of_array(int A[], int length) {
 
 void missing_elements(int seq[], int length) {
     /* Assume that the difference between each number of the sequence is 1. */
-    /* Assume that the seq does not contain non-zero positive numbers */
+    /* Assume that the seq only contain non-zero positive numbers */
     int max = max_min_of_array(seq, length)[0];
     int min = max_min_of_array(seq, length)[1];
 
