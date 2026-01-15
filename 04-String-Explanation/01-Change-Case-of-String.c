@@ -56,6 +56,7 @@ char* to_lower(const char* str) {
     }
     return new_str;
 }
+
 int main() {
     char *str_upper = to_upper("Hello (World)!");
     char *str_lower = to_lower("hAVE - a + NIcE -- DAY.");
