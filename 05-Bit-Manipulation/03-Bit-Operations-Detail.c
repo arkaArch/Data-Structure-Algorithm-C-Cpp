@@ -49,6 +49,7 @@ int main() {
      * 
      * 29 << 3 = 11101 << 3 = 11101000 = 232 */
     printf("29 << 3 = %d\n", 29 << 3);
+    /* We make the formula as N << k = N * 2^k */
 
     
     /* Right shift operator
@@ -57,6 +58,7 @@ int main() {
      * 
      * 29 >> 3 = 11101 >> 3 = 00011 = 3 */
     printf("29 >> 3 = %d\n", 29 >> 3);
+    /* We make the formula as N << k = N / 2^k */
 
     return 0;
 }
