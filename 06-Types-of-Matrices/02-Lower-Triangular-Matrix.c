@@ -10,10 +10,10 @@
  * | 2 3 0 0 |
  * | 4 5 6 0 |
  * | 7 8 9 2 |
- 
- * Number of non-zero elements = [n(n+1) / 2] */
-
-/* Here we're also storing the non-zero elements in a single dimension array.
+ * 
+ * Number of non-zero elements = [n(n+1) / 2]
+ *
+ * Here we're also storing the non-zero elements in a single dimension array.
  * A[(4x5)/2] = A[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 2}
  * Now to access the array we need some formula. Let's take row major formula
  * M[2,1] = A[(1+2) + 1] = A[4] = 5

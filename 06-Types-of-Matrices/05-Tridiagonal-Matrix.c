@@ -43,7 +43,7 @@ int Get(Tridiagonal_Matrix *M, int r, int c) {
     /* For main diagonal */
     else if(r - c == 0)
         return M->A[(M->n - 1) + r];
-/* For upper diagonal */
+    /* For upper diagonal */
     else if(r - c == -1)
         return M->A[2 * M->n - 1 + r];
     return 0;

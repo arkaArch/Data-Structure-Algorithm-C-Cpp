@@ -11,10 +11,12 @@
  * | 0 5 6 7 |
  * | 0 0 8 9 |
  * | 0 0 0 2 |
- 
- * Number of non-zero elements = [n(n+1) / 2] */
-
-/* Here we're also storing the non-zero elements in a single dimension array. * A[(4x5)/2] = A[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 2]
+ *
+ * Number of non-zero elements = [n(n+1) / 2]
+ *
+ * Here we're also storing the non-zero elements in a single dimension array. 
+ * A[(4x5)/2] = A[10] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 2]
+ * 
  * Now to access the array we need some formula. Let's take row major formula
  * Column major formular is same as row major formula of lower triangular matrix
  * M[2,3] = A[(3+2) + 3] = A[8] = 9
