@@ -114,7 +114,7 @@ int main() {
         printf("2. Insert Node\n");
         printf("3. Delete Node\n");
         printf("4. Reverse list\n");
-        printf("5. Exit");
+        printf("5. Exit\n");
 
         printf("\ninput >> ");
         scanf("%d", &input);
