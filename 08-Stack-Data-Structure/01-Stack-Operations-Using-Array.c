@@ -29,7 +29,7 @@ int pop(Stack *st) {
 
 int peek(Stack *st, int index) {
     /* We count index of stack from above (st.top = 1) */
-    if(index < 0 || index > st->top + 1)    // Invalid input
+    if(index <= 0 || index > st->top + 1)    // Invalid input
         return -1;
     return st->S[index - st->top + 1];
 }
@@ -41,8 +41,12 @@ int top(Stack *st) {
 }
 
 void display(Stack *st) {
-    for(int i = st->top; i > -1; st->top--)
-        printf("%d ", st->S[st->top]);
+    if(st->top == -1) {
+        printf("Stack is empty");
+        return;
+    }
+    for(int i = st->top; i > -1; i--)
+        printf("%d ", st->S[i]);
     printf("\n");
 }
 
@@ -67,34 +71,39 @@ int main() {
         printf("\ninput >> ");
         scanf("%d", &input);
 
-        int x;
+        int x, p;
         switch(input) {
             case 1:
                 display(&st);
+                break;
             case 2:
                 printf("Enter the element to be pushed: ");
                 scanf("%d", &x);
                 push(&st, x);
+                break;
             case 3:
-                int p = pop(&st);
+                p = pop(&st);
                 if(x == -1)
                     printf("Stack is empty.\n");
                 else
                     printf("Popped element: %d", p);
+                break;
             case 4:
                 printf("Enter the position: ");
                 scanf("%d", &x);
-                int p = peek(&st, x);
+                p = peek(&st, x);
                 if(p == -1)
                     printf("Invalid input.\n");
                 else
                     printf("Element at %d: %d", x, p);
+                break;
             case 5:
-                int t = top(&st);
-                if(t == -1)
+                p = top(&st);
+                if(p == -1)
                     printf("Stack is empty.\n");
                 else
-                    printf("Top element: %d", t);
+                    printf("Top element: %d", p);
+                break;
             case 6:
                 exit(0);
             default:
