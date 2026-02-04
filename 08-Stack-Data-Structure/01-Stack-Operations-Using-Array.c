@@ -28,8 +28,8 @@ int pop(Stack *st) {
 }
 
 int peek(Stack *st, int index) {
-    /* We count index of stack from above (st.top = 1) */
-    if(index <= 0 || index > st->top + 1)    // Invalid input
+    /* We count index of stack from above (st.top = position-1) */
+    if(index < 1 || index > st->top + 1)    // Invalid input
         return -1;
     return st->S[index - st->top + 1];
 }
@@ -83,7 +83,7 @@ int main() {
                 break;
             case 3:
                 p = pop(&st);
-                if(x == -1)
+                if(p == -1)
                     printf("Stack is empty.\n");
                 else
                     printf("Popped element: %d", p);
