@@ -11,7 +11,7 @@ typedef struct Node {
 Node* FRONT = NULL;
 Node* REAR = NULL;
 
-void enque(int value) {
+void enqueue(int value) {
     Node* new_node = malloc(sizeof(Node));
     if(new_node == NULL) {  // Heap is full
         printf("Queue is full");
@@ -70,7 +70,7 @@ int main() {
             case 2:
                 printf("Enter the element to be inserted: ");
                 scanf("%d", &x);
-                enque(x);
+                enqueue(x);
                 break;
             case 3:
                 p = dequeue();

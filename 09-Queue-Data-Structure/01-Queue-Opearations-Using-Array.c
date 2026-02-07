@@ -10,7 +10,7 @@ typedef struct Queue {
     int *Q;
 } Queue;
 
-void enque(Queue *q, int value) {
+void enqueue(Queue *q, int value) {
     /* If front pointer is ponting just after rear, q is full */
     if((q->rear + 1) % q->size == q->front) {
         printf("Queue is full\n");
@@ -72,7 +72,7 @@ int main() {
             case 2:
                 printf("Enter the element to be inserted: ");
                 scanf("%d", &x);
-                enque(&q, x);
+                enqueue(&q, x);
                 break;
             case 3:
                 p = dequeue(&q);
